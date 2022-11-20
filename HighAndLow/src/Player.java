@@ -7,11 +7,11 @@ public class Player{
 
 	//コンストラクタ(初期化処理)
 	public Player(){
-		card_info = new Card(); // オブジェクトを生成
+		card_info = new Card(); //オブジェクトを生成
 
 		//カードを初期化
-		card_info.no = 0; // 数字
-		card_info.suit = 0; // マーク
+		card_info.no = 0; //数字
+		card_info.suit = 0; //マーク
 	}
 
 	//メソッド定義
