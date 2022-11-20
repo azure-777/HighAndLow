@@ -41,31 +41,31 @@ public class Display implements ActionListener{
 		child = chl;
 
 		//ゲーム画面全体の表示設定
-		disp = new JFrame("HIGH & LOW"); // 画面を生成
-		disp.setSize(480, 280);          // 表示サイズを設定
-		disp.setLocationRelativeTo(null); // 画面の表示位置を中央に設定
-		disp.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // 「×」ボタンで画面を閉じるように設定
-		disp.setResizable(false); // 画面サイズを変更できないように設定
+		disp = new JFrame("HIGH & LOW"); //画面を生成
+		disp.setSize(480, 280);          //表示サイズを設定
+		disp.setLocationRelativeTo(null); //画面の表示位置を中央に設定
+		disp.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //「×」ボタンで画面を閉じるように設定
+		disp.setResizable(false); //画面サイズを変更できないように設定
 
 		//トップパネルの表示設定
 		top_panel = new JPanel();
-		setPanel(top_panel, Color.ORANGE, null , new Dimension(480, 50) ); // パネルの背景色、レイアウト、サイズを設定
-		disp.add( top_panel, BorderLayout.NORTH ); // 画面上部にパネルを追加
+		setPanel(top_panel, Color.ORANGE, null , new Dimension(480, 50) ); //パネルの背景色、レイアウト、サイズを設定
+		disp.add( top_panel, BorderLayout.NORTH ); //画面上部にパネルを追加
 
 		//メッセージラベルを表示
-		msg_lbl = new JLabel("一発勝負！HIGHかLOWか当ててください。"); // ラベルを生成
-		top_panel.add(msg_lbl); // トップパネルに追加
-		setLabelFont(msg_lbl, Color.BLACK, 0, 15, 480, 20, 20, false); // ラベルのフォント設定
+		msg_lbl = new JLabel("一発勝負！HIGHかLOWか当ててください。"); //ラベルを生成
+		top_panel.add(msg_lbl); //トップパネルに追加
+		setLabelFont(msg_lbl, Color.BLACK, 0, 15, 480, 20, 20, false); //ラベルのフォント設定
 
 		//ミドルパネルの表示設定
-		mid_panel = new JPanel(); // パネルの生成
-		setPanel(mid_panel, Color.CYAN, null, new Dimension(480,180) ); // パネルの背景色、レイアウト、サイズを設定
-		disp.add( mid_panel, BorderLayout.CENTER ); // 画面中央部にパネルを追加
+		mid_panel = new JPanel(); //パネルの生成
+		setPanel(mid_panel, Color.CYAN, null, new Dimension(480,180) ); //パネルの背景色、レイアウト、サイズを設定
+		disp.add( mid_panel, BorderLayout.CENTER ); //画面中央部にパネルを追加
 
 		//親カードの情報を表示
 		parent_lbl = new JLabel("私のカード");
-		parent_suit_lbl = new JLabel( getSuitIcon( parent.GetSuit() ) ); // マークを表示するラベル
-		parent_no_lbl = new JLabel( getNoStr( parent.GetNo() ) ); // 数字を表示するラベル
+		parent_suit_lbl = new JLabel( getSuitIcon( parent.GetSuit() ) ); //マークを表示するラベル
+		parent_no_lbl = new JLabel( getNoStr( parent.GetNo() ) ); //数字を表示するラベル
 		//ミドルパネルに追加
 		mid_panel.add(parent_lbl);
 		mid_panel.add(parent_suit_lbl);
@@ -77,9 +77,9 @@ public class Display implements ActionListener{
 
 		//子カードの情報を表示
 		child_lbl = new JLabel("あなたのカード");
-		child_suit_lbl = new JLabel( "" ); // マークを表示するラベル
-		child_no_lbl = new JLabel( "?" ); // 数字を表示するラベル
-		// ミドルパネルに追加
+		child_suit_lbl = new JLabel( "" ); //マークを表示するラベル
+		child_no_lbl = new JLabel( "?" ); //数字を表示するラベル
+		//ミドルパネルに追加
 		mid_panel.add(child_lbl);
 		mid_panel.add(child_suit_lbl);
 		mid_panel.add(child_no_lbl);
@@ -90,7 +90,7 @@ public class Display implements ActionListener{
 
 		//ボトムパネルの表示設定
 		bottom_Panel = new JPanel();
-		setPanel( bottom_Panel, Color.LIGHT_GRAY, new BorderLayout(), new Dimension(480, 50) ); // パネルの背景色、レイアウト、サイズを設定
+		setPanel( bottom_Panel, Color.LIGHT_GRAY, new BorderLayout(), new Dimension(480, 50) ); //パネルの背景色、レイアウト、サイズを設定
 		disp.add( bottom_Panel, BorderLayout.SOUTH ); //画面下部にパネルを追加
 
 		//HIGHボタンの表示
@@ -108,10 +108,10 @@ public class Display implements ActionListener{
 	}
 	//HIGHかLOWが選択されたときのイベント
 	public void actionPerformed(ActionEvent e){
-		String cmd = e.getActionCommand(); // アクションコマンド(どのボタンが押されたか)
-		int parent_no = parent.GetNo(); // 親カードの数字
-		int child_no = child.GetNo(); // 子カードの数字
-		int child_suit = child.GetSuit(); // 子カードのマーク
+		String cmd = e.getActionCommand(); //アクションコマンド(どのボタンが押されたか)
+		int parent_no = parent.GetNo(); //親カードの数字
+		int child_no = child.GetNo(); //子カードの数字
+		int child_suit = child.GetSuit(); //子カードのマーク
 
 		//子のカードをオープン
 		child_no_lbl.setBackground(Color.WHITE);
@@ -126,9 +126,9 @@ public class Display implements ActionListener{
 			btn_high.setBackground(Color.GREEN);
 
 			//結果を判定してメッセージを更新
-			if( parent_no < child_no ) // 子の方が大きい
+			if( parent_no < child_no ) //子の方が大きい
 				msg_lbl.setText("大正解、あなたの勝ちです！");
-			else if( parent_no > child_no ) // 親の方が大きい
+			else if( parent_no > child_no ) //親の方が大きい
 				msg_lbl.setText("不正解、あなたの負けです");
 			else //数字が同じ
 				msg_lbl.setText("奇遇ですね。引き分けです！");
@@ -139,9 +139,9 @@ public class Display implements ActionListener{
 			btn_low.setBackground(Color.GREEN);
 
 			//結果を判定してメッセージを更新
-			if( parent_no < child_no ) // 子の方が大きい
+			if( parent_no < child_no ) //子の方が大きい
 				msg_lbl.setText("不正解、あなたの負けです");
-			else if( parent_no > child_no ) // 親の方が大きい
+			else if( parent_no > child_no ) //親の方が大きい
 				msg_lbl.setText("大正解、あなたの勝ちです！");
 			else //数字が同じ
 				msg_lbl.setText("奇遇ですね。引き分けです！");
@@ -152,7 +152,7 @@ public class Display implements ActionListener{
 
 	//パネルのフォント設定を行うメソッド
 	public static void setPanel(JPanel panel, Color color, BorderLayout layout, Dimension dimension ){
-		panel.setBackground(color); // 背景色を設定
+		panel.setBackground(color); //背景色を設定
 		panel.setLayout(layout);  //レイアウトを設定
 		panel.setPreferredSize(dimension); //表示サイズを設定
 
@@ -164,12 +164,12 @@ public class Display implements ActionListener{
 			                       int x_pos, int y_pos,
 			                       int x_size, int y_size,
 			                       int strSize, boolean opq ){
-		label.setBackground(clr); // 背景色を設定
-		label.setLocation(x_pos, y_pos); // 表示位置を設定
-		label.setSize(x_size, y_size); // 表示サイズを設定
-		label.setFont( new Font("MS ゴシック", Font.PLAIN, strSize) ); // 書式、文字サイズを設定
-		label.setHorizontalAlignment(JLabel.CENTER); // 水平方向中央揃え
-		label.setVerticalAlignment(JLabel.CENTER); // 垂直方向中央揃え
+		label.setBackground(clr); //背景色を設定
+		label.setLocation(x_pos, y_pos); //表示位置を設定
+		label.setSize(x_size, y_size); //表示サイズを設定
+		label.setFont( new Font("MS ゴシック", Font.PLAIN, strSize) ); //書式、文字サイズを設定
+		label.setHorizontalAlignment(JLabel.CENTER); //水平方向中央揃え
+		label.setVerticalAlignment(JLabel.CENTER); //垂直方向中央揃え
 		label.setOpaque(opq); //ラベルの透明性を設定(true＝不透明、false＝透明)
 
 		return;
@@ -177,9 +177,9 @@ public class Display implements ActionListener{
 
 	//ボタンの設定を行うメソッド
 	public static void setButton(JButton btn, ActionListener al, int x_size, int y_size, int strSize ){
-		btn.setPreferredSize(new Dimension(x_size, y_size) ); // 表示サイズを設定
-		btn.setFont( new Font("MS ゴシック", Font.PLAIN, strSize) ); // 書式、文字サイズを設定
-		btn.addActionListener(al); // ボタンが押された時のイベントを受け取れるように設定
+		btn.setPreferredSize(new Dimension(x_size, y_size) ); //表示サイズを設定
+		btn.setFont( new Font("MS ゴシック", Font.PLAIN, strSize) ); //書式、文字サイズを設定
+		btn.addActionListener(al); //ボタンが押された時のイベントを受け取れるように設定
 
 		return;
 	}
